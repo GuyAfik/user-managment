@@ -1,4 +1,5 @@
 from flask import make_response, jsonify
+from core.common.exceptions import BaseApiException
 
 
 def http_response(code):
@@ -25,7 +26,10 @@ def http_response(code):
                     Response: a flask response object.
                 """
                 return make_response(jsonify(response), http_status_code)
-            return _http_response(response=func(*args, **kwargs), http_status_code=code)
+            try:
+                return _http_response(response=func(*args, **kwargs), http_status_code=code)
+            except BaseApiException as exc:
+                return _http_response(response=exc.to_dict(), http_status_code=exc.status_code)
         return wrapper
     return decorator
 

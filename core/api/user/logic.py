@@ -20,3 +20,17 @@ def create_user(**user_body_request):
         dict: user model dict representation.
     """
     return dal.create_user(**user_body_request).to_dict()
+
+
+@http_response(code=HttpCodes.OK)
+def get_user(user_id):
+    """
+    Get an existing user.
+
+    Args:
+        user_id (str): the ID of the user.
+
+    Returns:
+        dict: user model dict representation.
+    """
+    return dal.get_user(user_id=user_id).to_dict()

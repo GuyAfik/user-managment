@@ -31,7 +31,7 @@ class CustomBase(object):
             CustomBase: any CustomBase subclass.
         """
         db_session.add(self)
-        CustomBase._flush()
+        CustomBase._commit()
         return self
 
     def update(self, **kwargs):
@@ -51,20 +51,23 @@ class CustomBase(object):
         Delete the model from the DB.
         """
         db_session.delete(self)
-        CustomBase._flush()
+        CustomBase._commit()
 
     @staticmethod
-    def _flush():
+    def _commit():
         """
-        Flush the DB, rollback in case of a failure.
+        Commit the DB, rollback in case of a failure.
+
+        Raises:
+            DatabaseError: any error that the DB raises.
         """
         try:
-            db_session.flush()
+            db_session.commit()
         except DatabaseError as e:
-            # print(dir(db_session))
             # print(str(e))
             # print(type(e))
             db_session.rollback()
+            raise e
 
 
 BaseModel = declarative_base(cls=CustomBase, constructor=None)

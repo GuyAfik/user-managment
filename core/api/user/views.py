@@ -7,7 +7,7 @@ from flask import request
 from core.common.http_utils import HttpMethods
 
 
-@user_blueprint.route("/User", methods=[HttpMethods.POST])
+@user_blueprint.route("/user", methods=[HttpMethods.POST])
 def create_user():
     """
     Create user endpoint.
@@ -16,3 +16,17 @@ def create_user():
         dict: user model dict representation.
     """
     return logic.create_user(**request.json)
+
+
+@user_blueprint.route("/user/<user_id>", methods=[HttpMethods.GET])
+def get_user(user_id):
+    """
+    Get user endpoint.
+
+    Args:
+        user_id (str): the ID of the user.
+
+    Returns:
+        dict: user model dict representation.
+    """
+    return logic.get_user(user_id=user_id)

@@ -6,7 +6,7 @@ def run_application():
     """
     Runs the flask application with some custom configurations.
     """
-    debug = os.environ.get("APP_DEBUG", False)
+    debug = os.environ.get("DEBUG", False)
     host = os.environ.get("APP_HOST", "localhost")
     port = int(os.environ.get('APP_PORT', 5000))
 
