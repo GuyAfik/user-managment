@@ -41,3 +41,12 @@ def get_user(user_id):
     except NoResultFound:
         raise UserNotFound(f"User with ID {user_id} was not found")
 
+
+def get_users():
+    """
+    Get all the users from the DB.
+
+    Returns:
+         list[UserModel]: all users.
+    """
+    return UserModel.query.all()

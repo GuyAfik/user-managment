@@ -30,3 +30,14 @@ def get_user(user_id):
         dict: user model dict representation.
     """
     return logic.get_user(user_id=user_id)
+
+
+@user_blueprint.route("/users", methods=[HttpMethods.GET])
+def get_users():
+    """
+    Get users endpoint.
+
+    Returns:
+        list[dict]: users model dict representation.
+    """
+    return logic.get_users()

@@ -34,3 +34,14 @@ def get_user(user_id):
         dict: user model dict representation.
     """
     return dal.get_user(user_id=user_id).to_dict()
+
+
+@http_response(code=HttpCodes.OK)
+def get_users():
+    """
+    Get all the users.
+
+    Returns:
+        list[dict]: users model dict representation.
+    """
+    return [user.to_dict() for user in dal.get_users()]
