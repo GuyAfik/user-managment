@@ -45,3 +45,14 @@ def get_users():
         list[dict]: users model dict representation.
     """
     return [user.to_dict() for user in dal.get_users()]
+
+
+@http_response(code=HttpCodes.NO_CONTENT)
+def delete_user(user_id):
+    """
+    Delete user.
+
+    Args:
+        user_id (str): the ID of the user to delete.
+    """
+    dal.delete_user(user_id=user_id)

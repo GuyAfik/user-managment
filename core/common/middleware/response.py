@@ -1,5 +1,6 @@
 from flask import make_response, jsonify
 from core.common.exceptions import BaseApiException
+from core.common.http_utils import HttpCodes
 
 
 def http_response(code):
@@ -27,7 +28,9 @@ def http_response(code):
                 """
                 return make_response(jsonify(response), http_status_code)
             try:
-                return _http_response(response=func(*args, **kwargs), http_status_code=code)
+                return _http_response(
+                    response=func(*args, **kwargs) if code != HttpCodes.NO_CONTENT else "", http_status_code=code
+                )
             except BaseApiException as exc:
                 return _http_response(response=exc.to_dict(), http_status_code=exc.status_code)
         return wrapper

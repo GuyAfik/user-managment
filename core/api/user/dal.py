@@ -50,3 +50,13 @@ def get_users():
          list[UserModel]: all users.
     """
     return UserModel.query.all()
+
+
+def delete_user(user_id):
+    """
+    Delete user from the DB.
+
+    Args:
+        user_id (str): the ID of the user.
+    """
+    UserModel.delete(get_user(user_id=user_id))
