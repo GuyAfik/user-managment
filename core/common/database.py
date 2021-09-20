@@ -63,11 +63,9 @@ class CustomBase(object):
         """
         try:
             db_session.commit()
-        except DatabaseError as e:
-            # print(str(e))
-            # print(type(e))
+        except DatabaseError as exc:
             db_session.rollback()
-            raise e
+            raise exc
 
 
 BaseModel = declarative_base(cls=CustomBase, constructor=None)

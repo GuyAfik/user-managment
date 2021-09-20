@@ -28,8 +28,9 @@ def http_response(code):
                 """
                 return make_response(jsonify(response), http_status_code)
             try:
+                response = func(*args, **kwargs)
                 return _http_response(
-                    response=func(*args, **kwargs) if code != HttpCodes.NO_CONTENT else "", http_status_code=code
+                    response=response if code != HttpCodes.NO_CONTENT else "", http_status_code=code
                 )
             except BaseApiException as exc:
                 return _http_response(response=exc.to_dict(), http_status_code=exc.status_code)

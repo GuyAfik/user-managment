@@ -55,3 +55,17 @@ def delete_user(user_id):
         str: empty response in case of success.
     """
     return logic.delete_user(user_id=user_id)
+
+
+@user_blueprint.route("/user/<user_id>", methods=[HttpMethods.PUT])
+def update_user(user_id):
+    """
+    Update user endpoint.
+
+    Args:
+        user_id (str): the ID of the user to delete.
+
+    Returns:
+        str: empty response in case of success.
+    """
+    return logic.update_user(user_id=user_id, **request.json)

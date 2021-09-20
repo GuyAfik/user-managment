@@ -60,3 +60,23 @@ def delete_user(user_id):
         user_id (str): the ID of the user.
     """
     UserModel.delete(get_user(user_id=user_id))
+
+
+def update_user(user_id, **user_body_response):
+    """
+    Update user in the DB.
+
+    Args:
+        user_id (str): the ID of the user.
+
+    Keyword Arguments:
+        email (str): user email address.
+        username (str): the username of the user.
+        password (str): user's password.
+
+    Returns:
+        UserModel: user model object.
+    """
+    user = get_user(user_id=user_id)
+    user.update(**user_body_response)
+    return user
