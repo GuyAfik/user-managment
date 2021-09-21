@@ -47,6 +47,13 @@ class Duplicate(BaseApiException):
     status_code = HttpCodes.DUPLICATE
 
 
+class BadRequest(BaseApiException):
+    """
+    Base class for a bad request body.
+    """
+    status_code = HttpCodes.BAD_REQUEST
+
+
 class UserNotFound(ResourceNotFound):
     """
     Raised when a user was not found.
@@ -57,5 +64,12 @@ class UserNotFound(ResourceNotFound):
 class DuplicateUserEmail(Duplicate):
     """
     Raised when the user email already exists.
+    """
+    pass
+
+
+class InvalidPassword(BadRequest):
+    """
+    Raised when the client provided invalid password requirements.
     """
     pass
