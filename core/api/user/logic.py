@@ -1,9 +1,12 @@
 """
 Business logic layer
 """
+import hashlib
+
 from core.api.user import dal
 from core.common.middleware.response import http_response
 from core.common.http_utils import HttpCodes
+from core.common.encryptions_utils import hash_
 
 
 @http_response(code=HttpCodes.OK)
@@ -19,6 +22,10 @@ def create_user(**user_body_request):
     Returns:
         dict: user model dict representation.
     """
+    _password = "password"
+
+    if _password in user_body_request:
+        user_body_request[_password] = hash_(string=user_body_request[_password])
     return dal.create_user(**user_body_request).to_dict()
 
 
