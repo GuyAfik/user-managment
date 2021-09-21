@@ -78,6 +78,7 @@ def update_user(user_id, **user_body_response):
         email (str): user email address.
         username (str): the username of the user.
         password (str): user's password.
+        login_attempts (int): user login attempts.
     """
     dal.update_user(user_id=user_id, **user_body_response)
 

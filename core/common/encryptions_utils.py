@@ -11,4 +11,6 @@ def hash_(string):
     Returns:
         str: sha256 hash representation of the string.
     """
-    return hashlib.sha256(string.encode("utf-8")).hexdigest()
+    if isinstance(string, str):
+        return hashlib.sha256(string.encode("utf-8")).hexdigest()
+    return ""
