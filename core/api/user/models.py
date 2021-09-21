@@ -13,4 +13,5 @@ class UserModel(BaseModel, ModelToDict):
     username = Column(String)
     email = Column(String, nullable=False, unique=True)
     password = Column(String)
+    login_attempts = Column(Integer, default=0)
 

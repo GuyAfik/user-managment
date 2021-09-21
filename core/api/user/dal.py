@@ -4,7 +4,7 @@ Data Access Layer
 from core.api.user.models import UserModel
 from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy.exc import IntegrityError
-from core.common.exceptions import UserNotFound, DuplicateUserEmail
+from core.api.user.errors import UserNotFound, DuplicateUserEmail
 
 
 def create_user(**user_body_request):

@@ -69,3 +69,19 @@ def update_user(user_id):
         str: empty response in case of success.
     """
     return logic.update_user(user_id=user_id, **request.json)
+
+
+@user_blueprint.route("/login/<user_id>/<username>/<password>", methods=[HttpMethods.GET])
+def login(user_id, username, password):
+    """
+    Login into a user endpoint.
+
+    Args:
+        user_id (str): user ID.
+        username (str): user name.
+        password (str): user password.
+
+    Returns:
+        dict: user model dict representation
+    """
+    return logic.login(user_id=user_id, username=username, password=password)

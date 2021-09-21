@@ -54,22 +54,15 @@ class BadRequest(BaseApiException):
     status_code = HttpCodes.BAD_REQUEST
 
 
-class UserNotFound(ResourceNotFound):
+class UnAuthorized(BaseApiException):
     """
-    Raised when a user was not found.
+    Base class for unauthorized operations.
     """
-    pass
+    status_code = HttpCodes.UNAUTHORIZED
 
 
-class DuplicateUserEmail(Duplicate):
+class ForbiddenOperation(BaseApiException):
     """
-    Raised when the user email already exists.
+    Base class for forbidden operations.
     """
-    pass
-
-
-class InvalidPassword(BadRequest):
-    """
-    Raised when the client provided invalid password requirements.
-    """
-    pass
+    status_code = HttpCodes.FORBIDDEN
