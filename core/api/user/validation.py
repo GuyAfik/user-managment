@@ -1,6 +1,6 @@
 import re
 
-from core.common.exceptions import InvalidPassword
+from core.api.user.errors import InvalidPassword
 
 
 def is_valid_password(password):

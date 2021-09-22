@@ -49,7 +49,7 @@ class Duplicate(BaseApiException):
 
 class BadRequest(BaseApiException):
     """
-    Base class for a bad request body.
+    Base class for a bad body request.
     """
     status_code = HttpCodes.BAD_REQUEST
 
