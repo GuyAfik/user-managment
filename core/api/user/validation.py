@@ -22,14 +22,14 @@ def is_valid_password(password):
         bool: True if password is valid, False if not.
     """
     if len(password) < 8:
-        raise InvalidPassword(err_msg="Password must be more than 8 characters or more")
+        raise InvalidPassword(err_msg=f"Password {password} must be more than 8 characters or more")
     if re.search(pattern="[a-z]", string=password):
-        raise InvalidPassword(err_msg="Password must contain at least one small english character")
+        raise InvalidPassword(err_msg=f"Password {password} must contain at least one small english character")
     if re.search(pattern="[A-Z]", string=password):
-        raise InvalidPassword(err_msg="Password must contain at least one big english character")
+        raise InvalidPassword(err_msg=f"Password {password} must contain at least one big english character")
     if re.search(pattern="[0-9]", string=password):
-        raise InvalidPassword(err_msg="Password must contain at least one number")
+        raise InvalidPassword(err_msg=f"Password {password} must contain at least one number")
     if re.search(pattern="[!@#$%^&*_]", string=password):
-        raise InvalidPassword(err_msg="Password must contain at least one special character")
+        raise InvalidPassword(err_msg=f"Password {password} must contain at least one special character")
     if re.search(pattern="\s", string=password):
-        raise InvalidPassword(err_msg="Password must not contain white spaces")
+        raise InvalidPassword(err_msg=f"Password {password} must not contain white spaces")
