@@ -36,4 +36,3 @@ def http_response(code):
                 return _http_response(response=exc.to_dict(), http_status_code=exc.status_code)
         return wrapper
     return decorator
-
