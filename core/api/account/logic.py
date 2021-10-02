@@ -17,3 +17,16 @@ def create_account(**account_details):
         dict: account dict representation
     """
     return dal.create_account(**account_details).to_dict()
+
+
+def get_account(account_id):
+    """
+    Get account from the DB.
+
+    Args:
+        account_id (str): account ID.
+
+    Returns:
+        dict: account model dict representation.
+    """
+    return dal.get_account(account_id=account_id).to_dict()
