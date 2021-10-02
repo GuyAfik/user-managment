@@ -19,6 +19,7 @@ def create_account(**account_details):
     return dal.create_account(**account_details).to_dict()
 
 
+@http_response(code=HttpCodes.OK)
 def get_account(account_id):
     """
     Get account from the DB.
@@ -32,6 +33,7 @@ def get_account(account_id):
     return dal.get_account(account_id=account_id).to_dict()
 
 
+@http_response(code=HttpCodes.OK)
 def get_accounts():
     """
     Get all the accounts.
