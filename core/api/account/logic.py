@@ -30,3 +30,13 @@ def get_account(account_id):
         dict: account model dict representation.
     """
     return dal.get_account(account_id=account_id).to_dict()
+
+
+def get_accounts():
+    """
+    Get all the accounts.
+
+    Returns:
+        list[dict]: account models dict representation.
+    """
+    return [account.to_dict() for account in dal.get_accounts()]

@@ -19,7 +19,7 @@ def create_account():
 @account_blueprint.route("/account/<account_id>", methods=[HttpMethods.GET])
 def get_account(account_id):
     """
-    Get account from the DB.
+    Get account endpoint.
 
     Args:
         account_id (str): account ID.
@@ -28,3 +28,14 @@ def get_account(account_id):
         dict: account model dict representation.
     """
     return logic.get_account(account_id=account_id)
+
+
+@account_blueprint.route("/accounts", methods=[HttpMethods.GET])
+def get_accounts():
+    """
+    Get all the accounts endpoint.
+
+    Returns:
+        list[dict]: account models dict representation.
+    """
+    return logic.get_accounts()

@@ -33,3 +33,13 @@ def get_account(account_id):
         return AccountModel.query.filter(AccountModel.id == account_id).one()
     except NoResultFound:
         raise AccountNotFound(f"Account with ID {account_id} was not found")
+
+
+def get_accounts():
+    """
+    Get all the accounts from the DB.
+
+    Returns:
+        list[AccountModel]: account model objects.
+    """
+    return AccountModel.query.all()
