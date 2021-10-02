@@ -14,9 +14,6 @@ def create_app():
 
     application.register_blueprint(blueprint=user_blueprint)
 
-    # before_request_middleware(app=app)
-    application.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///NetworkSecurityDB.db'
-
     init_db()
 
     return application
