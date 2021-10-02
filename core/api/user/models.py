@@ -1,5 +1,6 @@
 from core.common.serializers import ModelToDict
 from core.common.database import BaseModel
+from sqlalchemy.orm import relationship
 from sqlalchemy import Column, Integer, String
 
 
@@ -14,4 +15,5 @@ class UserModel(BaseModel, ModelToDict):
     email = Column(String, nullable=False, unique=True)
     password = Column(String)
     login_attempts = Column(Integer, default=0)
+    accounts = relationship("AccountModel")
 
