@@ -26,7 +26,7 @@ class BaseApiException(Exception):
         """
         return {
             "error": {
-                "code": self.status_code,
+                "code": self.__class__.code(),
                 "message": self.err_msg,
                 "type": self.__class__.__name__
             }
