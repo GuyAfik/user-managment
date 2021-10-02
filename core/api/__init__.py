@@ -1,5 +1,6 @@
 from flask import Flask
 from core.api.user import user_blueprint
+from core.api.account import account_blueprint
 from core.common.database import init_db
 
 
@@ -13,6 +14,7 @@ def create_app():
     application = Flask(__name__)
 
     application.register_blueprint(blueprint=user_blueprint)
+    application.register_blueprint(blueprint=account_blueprint)
 
     init_db()
 
