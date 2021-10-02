@@ -43,3 +43,23 @@ def get_accounts():
         list[AccountModel]: account model objects.
     """
     return AccountModel.query.all()
+
+
+def update_account(account_id, **account_details):
+    """
+    Update account and insert the update to DB.
+
+    Args:
+        account_id (str): account ID.
+
+    Keyword Arguments:
+        number (int): account number.
+        amount (float): account amount of money.
+        user_id = to which user does the account belong.
+
+    Returns:
+        AccountModel: updated account model object.
+    """
+    account = get_account(account_id=account_id)
+    account.update(**account_details)
+    return account

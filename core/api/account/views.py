@@ -39,3 +39,14 @@ def get_accounts():
         list[dict]: account models dict representation.
     """
     return logic.get_accounts()
+
+
+@account_blueprint.route("/account/<account_id>", methods=[HttpMethods.PUT])
+def update_account(account_id):
+    """
+    Update account endpoint.
+
+    Args:
+        account_id (str): account ID.
+    """
+    return logic.update_account(account_id=account_id, **request.json)

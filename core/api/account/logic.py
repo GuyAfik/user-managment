@@ -42,3 +42,19 @@ def get_accounts():
         list[dict]: account models dict representation.
     """
     return [account.to_dict() for account in dal.get_accounts()]
+
+
+@http_response(code=HttpCodes.NO_CONTENT)
+def update_account(account_id, **account_details):
+    """
+    Update account.
+
+    Args:
+        account_id (str): account ID.
+
+    Keyword Arguments:
+        number (int): account number.
+        amount (float): account amount of money.
+        user_id = to which user does the account belong.
+    """
+    dal.update_account(account_id=account_id, **account_details)
