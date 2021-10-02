@@ -32,6 +32,16 @@ class BaseApiException(Exception):
             }
         }
 
+    @classmethod
+    def code(cls):
+        """
+        Get status code.
+
+        Returns:
+            int: error status code.
+        """
+        return cls.status_code
+
 
 class ResourceNotFound(BaseApiException):
     """
